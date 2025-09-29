@@ -1,11 +1,8 @@
 import { Routes } from '@angular/router';
-import { Welcome } from './pages/welcome/welcome';
-import { Home } from './pages/home/home';
-import { Map } from './pages/map/map';
 
 export const routes: Routes = [
-  { path: '', component: Welcome },
-  { path: 'welcome', component: Welcome },
-  { path: 'home', component: Home },
-  { path: 'map', component: Map }
+  { path: '', loadComponent: () => import('./pages/welcome/welcome').then(m => m.Welcome) },
+  { path: 'welcome', loadComponent: () => import('./pages/welcome/welcome').then(m => m.Welcome) },
+  { path: 'home', loadComponent: () => import('./pages/home/home').then(m => m.Home) },
+  { path: 'map', loadComponent: () => import('./pages/map/map').then(m => m.Map) }
 ];
